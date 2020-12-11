@@ -1,9 +1,22 @@
 #!/bin/bash/ -x
-r1=$((RANDOM%99));
-r2=$((RANDOM%99));
-r3=$((RANDOM%99));
-r4=$((RANDOM%99));
-r5=$((RANDOM%99));
-sum=$(($r1+$r2+$r3+$r4+$r5));
-echo "Sum Of 5 Random Numbers:" $sum;
-echo "Average Of Sum:" $(($sum/5));
+for((i=0;i<10;i++))
+do
+	rv=$((RANDOM%900+100));
+	((a[$i]=$rv))
+done
+for ((i = 0; i<10; i++)) 
+do  
+    for((j = 0; j<10-i-1; j++)) 
+    do
+      
+        if [ ${a[j]} -gt ${a[$((j+1))]} ] 
+        then
+            # swap 
+            temp=${a[j]} 
+            a[$j]=${a[$((j+1))]}   
+            a[$((j+1))]=$temp 
+        fi
+    done
+done
+echo "2nd Largest Element:" ${a[8]}
+echo "2nd Smallest Element" ${a[1]} 
