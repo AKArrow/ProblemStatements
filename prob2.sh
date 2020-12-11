@@ -1,22 +1,14 @@
 #!/bin/bash/ -x
-for((i=0;i<10;i++))
+declare -A y92
+declare -A y93
+for((i=1;i<=50;i++))
 do
-	rv=$((RANDOM%900+100));
-	((a[$i]=$rv))
+	rv=$((RANDOM%2))
+	rv2=$((RANDOM%12+1))
+	if [ $rv -eq 0 ]
+	then
+		echo $i "Individual Birthday in" $rv2 "Month Year 92"
+	else
+		echo $i "Individual Birthday in" $rv2 "Month Year 93"
+	fi
 done
-for ((i = 0; i<10; i++)) 
-do  
-    for((j = 0; j<10-i-1; j++)) 
-    do
-      
-        if [ ${a[j]} -gt ${a[$((j+1))]} ] 
-        then
-            # swap 
-            temp=${a[j]} 
-            a[$j]=${a[$((j+1))]}   
-            a[$((j+1))]=$temp 
-        fi
-    done
-done
-echo "2nd Largest Element:" ${a[8]}
-echo "2nd Smallest Element" ${a[1]} 
